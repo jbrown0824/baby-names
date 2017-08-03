@@ -107,7 +107,6 @@ class Controller extends BaseController
             }
 
             if (strtotime($voter->refills_on) <= time()) {
-                dd('gonna update');
                 $voter->refills_on = date("Y-m-d 00:00:00", strtotime('next sunday'));
                 $voter->votes_available = 10;
                 $voter->save();
@@ -116,7 +115,6 @@ class Controller extends BaseController
         }
 
         if ($updateRequired) {
-            dd('updating');
             // Update ranks of names for last week
             $names = Names::orderBy('votes')->get();
             foreach ($names as $rank => $name) {
