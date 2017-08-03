@@ -54,6 +54,7 @@
         <th>Rank</th>
         <th></th>
         <th>Name</th>
+        <th>Nickname(s)</th>
         <th># Votes</th>
     </tr>
     @foreach ($names as $rank => $name)
@@ -69,6 +70,7 @@
                 @endif
             </td>
             <td>{{$name->name}}</td>
+            <td>{{$name->nickname}}</td>
             <td>{{$name->votes}}</td>
         </tr>
     @endforeach
