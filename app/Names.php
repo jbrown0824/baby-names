@@ -12,6 +12,6 @@ class Names extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'votes', 'rank_last_week', 'last_rank_update'
+        'name', 'nickname', 'votes', 'rank_last_week', 'last_rank_update'
     ];
 }

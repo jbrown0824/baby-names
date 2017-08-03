@@ -73,6 +73,7 @@ class Controller extends BaseController
         //Create Name
         $name = new Names([
             'name' => $input['name'],
+            'nickname' => $input['nickname'],
             'votes' => 3,
             'rank_last_week' => count($names),
             'last_rank_update' => date("Y-m-d 00:00:00")

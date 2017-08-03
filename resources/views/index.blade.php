@@ -110,6 +110,7 @@
     <h2>Add Name</h2>
     Who are you: @include('partials.voters')<br>
     Name to Add: <input name="name"><br>
+    Nickname(s): <input name="nickname"><br>
     Cost: 3 votes<br>
     <input type="submit" value="Add name">
 </form>
