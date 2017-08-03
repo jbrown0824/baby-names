@@ -20,7 +20,7 @@ class Controller extends BaseController
 
         $voters = Voters::get();
         $names = Names::orderBy('votes', 'desc')->get();
-        $votes = Votes::with('voter')->orderBy('id', 'desc')->get();
+        $votes = Votes::with('voter', 'name')->orderBy('id', 'desc')->get();
 
         return view('index', compact('voters', 'names', 'votes'));
     }

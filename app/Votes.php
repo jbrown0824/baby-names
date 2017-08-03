@@ -18,4 +18,8 @@ class Votes extends Model
     public function voter() {
         return $this->belongsTo(Voters::class);
     }
+
+    public function name() {
+        return $this->belongsTo(Names::class);
+    }
 }

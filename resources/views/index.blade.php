@@ -121,6 +121,7 @@
     <tr>
         <th>Who</th>
         <th>Action Taken</th>
+        <th>For:</th>
         <th>Votes Used</th>
         <th>Date</th>
     </tr>
@@ -128,6 +129,7 @@
         <tr>
             <td>{{$vote->voter->name}}</td>
             <td>{{$vote->note}}</td>
+            <td>{{$vote->name->name}}</td>
             <td>{{$vote->num_votes_used}}</td>
             <td>{{date('F d, Y h:i:s a', strtotime($vote->created_at))}}</td>
         </tr>
