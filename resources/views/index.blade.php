@@ -64,9 +64,9 @@
                 @if ($name->rank_last_week == ($rank+1))
                     -
                 @elseif ($name->rank_last_week < ($rank+1))
-                    <img src="/images/{{($rank+1) - $name->rank_last_week > 3 ? 'downdown' : 'down'}}.png" />
+                    <img alt="{{$name->rank_last_week}}" src="/images/{{($rank+1) - $name->rank_last_week > 3 ? 'downdown' : 'down'}}.png" />
                 @else
-                    <img src="/images/{{$name->rank_last_week - ($rank+1) > 3 ? 'upup' : 'up'}}.png" />
+                    <img alt="{{$name->rank_last_week}}" src="/images/{{$name->rank_last_week - ($rank+1) > 3 ? 'upup' : 'up'}}.png" />
                 @endif
             </td>
             <td>{{$name->name}}</td>
