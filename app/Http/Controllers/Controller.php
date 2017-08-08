@@ -117,10 +117,9 @@ class Controller extends BaseController
 
         if ($updateRequired) {
             // Update ranks of names for last week
-            $names = Names::orderBy('votes')->get();
+            $names = Names::orderBy('votes', 'desc')->get();
             foreach ($names as $rank => $name) {
-                $rank++;
-                $name->rank_last_week = $rank;
+                $name->rank_last_week = $rank+1;
                 $name->save();
             }
         }
