@@ -29,7 +29,8 @@ class Controller extends BaseController
         $input = $request->all();
         $voter = Voters::find($input['voter_id']);
         $name = Names::find($input['name_id']);
-        $numVotes = (int) $input['num_votes'] > $voter->votes_available ? $voter->votes_available : $input['num_votes'];
+        $absNumVotes = abs($input['num_votes']);
+        $numVotes = (int) $absNumVotes > $voter->votes_available ? $voter->votes_available : $absNumVotes;
 
         if (!$name) {
             dd('could not find name to vote for');
