@@ -14,7 +14,7 @@ class AddNicknames extends Migration
     public function up()
     {
         Schema::table('names', function($table) {
-            $table->string('nickname')->after('name');
+            $table->string('nickname')->after('name')->default('')->nullable();
         });
     }
 

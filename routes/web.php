@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', 'Controller@index');
-Route::get('/add_votes', 'Controller@add_votes');
-Route::get('/add_name', 'Controller@add_name');
+Route::middleware(['httpauth'])->group(function () {
+    Route::get('/', 'Controller@index');
+    Route::get('/add_votes', 'Controller@add_votes');
+    Route::get('/add_name', 'Controller@add_name');
+});
