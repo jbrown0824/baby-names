@@ -1,3 +1,10 @@
+<!doctype html>
+<html>
+<head>
+<title>Baby Names</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
 <style>
     table {
         border-collapse: collapse;
@@ -138,3 +145,6 @@
         </tr>
     @endforeach
 </table>
+
+</body>
+</html>
