@@ -8,6 +8,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import HighchartsVue from 'highcharts-vue';
+
+Vue.use(HighchartsVue);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,6 +19,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('graphs', require('./components/Graphs.vue'));
 
 const app = new Vue({
     el: '#app'

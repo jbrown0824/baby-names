@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Names;
 use App\Voters;
 use App\Votes;
+use Carbon\Carbon;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use DB;
 
 class Controller extends BaseController
 {
@@ -22,7 +24,19 @@ class Controller extends BaseController
         $names = Names::orderBy('votes', 'desc')->get();
         $votes = Votes::with('voter', 'name')->orderBy('id', 'desc')->get();
 
-        return view('index', compact('voters', 'names', 'votes'));
+        $weeklyVotes = [];
+
+        foreach ($votes as $vote) {
+        	$week = Carbon::parse($vote->created_at)->format('W/Y');
+        	$weeklyVotes[ $week ] = $weeklyVotes[ $week ] ?? [];
+
+			$weeklyVotes[ $week ][] = $vote;
+		}
+
+		DB::statement('SET sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"');
+        $weeklyVotes = collect(DB::select('SELECT SUM(num_votes_used) as votes, names.name, CONCAT(WEEK(votes.created_at), "/", YEAR(votes.created_at)) as weekname FROM votes INNER JOIN names on votes.name_id = names.id GROUP BY weekname, name_id ORDER BY votes.created_at'))->groupBy('weekname');
+
+        return view('index', compact('voters', 'names', 'votes', 'weeklyVotes'));
     }
 
     public function add_votes(Request $request) {
