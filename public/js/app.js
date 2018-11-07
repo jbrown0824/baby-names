@@ -43893,7 +43893,9 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 						if (vote.name === name) value = vote.votes;
 					});
 
-					seriesByName[name].push(seriesByName[name][seriesByName[name].length - 1] + parseInt(value, 10));
+					var lastValue = seriesByName[name][seriesByName[name].length - 1] || 0;
+
+					seriesByName[name].push(lastValue + parseInt(value, 10));
 				});
 			});
 
