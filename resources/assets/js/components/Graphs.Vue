@@ -90,7 +90,7 @@ export default {
 						if (vote.name === name) value = vote.votes;
 					});
 
-					seriesByName[ name ].push(_.sum(seriesByName[ name ]) + parseInt(value, 10));
+					seriesByName[ name ].push(seriesByName[ name ][ seriesByName[ name ].length - 1 ] + parseInt(value, 10));
 				});
 
 			});
